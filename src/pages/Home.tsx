@@ -58,27 +58,33 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 icon: <Lock className="h-8 w-8 text-blue-400" />,
                 title: "Password Protected",
-                description: "Once Protection Mode is on, only you can turn it off with your chosen password. No impulse decisions."
+                description: "Once Protection Mode is on, only you can turn it off with your chosen password. No impulse decisions.",
+                bgColor: "bg-gradient-to-br from-blue-600/20 to-blue-800/20",
+                borderColor: "border-blue-500/30"
               },
               {
                 icon: <Globe className="h-8 w-8 text-purple-400" />,
                 title: "Global Coverage",
-                description: "Blocks all gambling websites worldwide. Comprehensive protection that adapts as new sites emerge."
+                description: "Blocks all gambling websites worldwide. Comprehensive protection that adapts as new sites emerge.",
+                bgColor: "bg-gradient-to-br from-purple-600/20 to-purple-800/20",
+                borderColor: "border-purple-500/30"
               },
               {
                 icon: <Smartphone className="h-8 w-8 text-emerald-400" />,
                 title: "Android Ready",
-                description: "Seamlessly integrates with your Android device. Simple setup, powerful protection."
+                description: "Seamlessly integrates with your Android device. Simple setup, powerful protection.",
+                bgColor: "bg-gradient-to-br from-emerald-600/20 to-emerald-800/20",
+                borderColor: "border-emerald-500/30"
               }
             ].map((feature, index) => (
               <Card 
                 key={index} 
-                className="feature-card group" 
+                className={`feature-card group ${feature.bgColor} ${feature.borderColor}`} 
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="animate-fade-in-up">

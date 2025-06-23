@@ -1,6 +1,6 @@
 
 import { ReactNode } from "react";
-import Navigation from "./Navigation";
+import ResizableNavbar from "./ResizableNavbar";
 import { BackgroundBeams } from "./BackgroundBeams";
 
 interface LayoutProps {
@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-screen bg-background relative overflow-hidden">
       <BackgroundBeams />
       <div className="relative z-10">
-        <Navigation />
+        <ResizableNavbar />
         <main className="pt-16">
           {children}
         </main>
