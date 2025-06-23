@@ -1,6 +1,7 @@
 
 import { ReactNode } from "react";
 import Navigation from "./Navigation";
+import { BackgroundBeams } from "./BackgroundBeams";
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,11 +9,14 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-      <main className="pt-16">
-        {children}
-      </main>
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      <BackgroundBeams />
+      <div className="relative z-10">
+        <Navigation />
+        <main className="pt-16">
+          {children}
+        </main>
+      </div>
     </div>
   );
 };

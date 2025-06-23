@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Shield } from "lucide-react";
+import { Check, Shield, Zap, Crown } from "lucide-react";
 
 const Pricing = () => {
   const plans = [
@@ -19,7 +19,8 @@ const Pricing = () => {
         "Android app support",
         "Email support"
       ],
-      popular: false
+      popular: false,
+      icon: <Shield className="h-6 w-6 text-blue-400" />
     },
     {
       name: "Yearly",
@@ -37,73 +38,81 @@ const Pricing = () => {
         "30-day money-back guarantee"
       ],
       popular: true,
-      savings: "Save $11"
+      savings: "Save $11",
+      icon: <Crown className="h-6 w-6 text-yellow-400" />
     }
   ];
 
   return (
-    <div className="py-24 px-6 sm:px-8">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <Badge variant="secondary" className="mb-4">
+    <div className="py-32 px-6 sm:px-8 relative">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-20 animate-fade-in-up">
+          <Badge variant="secondary" className="mb-6 glass-effect border-blue-500/20 text-blue-400">
             Pricing
           </Badge>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+          <h1 className="text-5xl sm:text-6xl font-bold mb-8 text-white leading-tight">
             Choose your{" "}
             <span className="text-gradient">protection plan</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Affordable, comprehensive protection. Your investment in a gambling-free future.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 mb-20 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <Card 
               key={plan.name}
-              className={`relative overflow-hidden transition-all duration-300 hover:-translate-y-2 animate-fade-in-up ${
+              className={`relative overflow-hidden transition-all duration-500 hover:-translate-y-2 animate-fade-in-up ${
                 plan.popular 
-                  ? 'ring-2 ring-blue-500 shadow-xl bg-white scale-105' 
-                  : 'bg-white border-gray-200 shadow-lg hover:shadow-xl'
+                  ? 'premium-card bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-blue-500/30 scale-105 lg:scale-110' 
+                  : 'premium-card'
               }`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * 150}ms` }}
             >
               {plan.popular && (
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-blue-500 text-white text-center py-2 text-sm font-medium">
-                  <Shield className="inline-block w-4 h-4 mr-1" />
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-3 text-sm font-medium">
+                  <Zap className="inline-block w-4 h-4 mr-2" />
                   Most Popular • {plan.savings}
                 </div>
               )}
               
-              <CardHeader className={plan.popular ? "pt-12" : ""}>
-                <CardTitle className="text-2xl text-gray-900">{plan.name}</CardTitle>
-                <CardDescription className="text-gray-600">
+              <CardHeader className={plan.popular ? "pt-16" : "pt-8"}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10">
+                    {plan.icon}
+                  </div>
+                  <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
+                </div>
+                <CardDescription className="text-gray-400 text-lg">
                   {plan.description}
                 </CardDescription>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-600 ml-2">{plan.period}</span>
+                <div className="mt-6">
+                  <span className="text-5xl font-bold text-white">{plan.price}</span>
+                  <span className="text-gray-400 ml-3 text-lg">{plan.period}</span>
                   {plan.originalPrice && (
-                    <span className="text-gray-400 line-through ml-2 text-lg">{plan.originalPrice}</span>
+                    <span className="text-gray-500 line-through ml-3 text-xl">{plan.originalPrice}</span>
                   )}
                 </div>
               </CardHeader>
               
-              <CardContent>
-                <ul className="space-y-3 mb-8">
+              <CardContent className="pt-0">
+                <ul className="space-y-4 mb-10">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <Check className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <div className="p-1 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 mr-4">
+                        <Check className="h-3 w-3 text-white" />
+                      </div>
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
                 <Button 
-                  className={`w-full rounded-full ${
+                  className={`w-full rounded-full py-6 text-lg font-medium ${
                     plan.popular 
-                      ? 'bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600' 
-                      : 'bg-blue-600 hover:bg-blue-700'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 glow text-white border-0' 
+                      : 'glass-effect border-white/20 text-white hover:bg-white/10'
                   }`}
                 >
                   {plan.popular ? "Get Protected Now" : "Choose Plan"}
@@ -113,14 +122,19 @@ const Pricing = () => {
           ))}
         </div>
 
-        <div className="text-center animate-fade-in-up" style={{ animationDelay: "300ms" }}>
-          <Card className="inline-block p-8 bg-gray-50 border-gray-200">
-            <h3 className="text-xl font-bold mb-4 text-gray-900">Questions about pricing?</h3>
-            <p className="text-gray-600 mb-6 max-w-md">
+        <div className="text-center animate-fade-in-up" style={{ animationDelay: "400ms" }}>
+          <Card className="inline-block premium-card max-w-md">
+            <div className="mb-6">
+              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-blue-500 glow">
+                <Shield className="h-6 w-6 text-white" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-4 text-white">Questions about pricing?</h3>
+            <p className="text-gray-400 mb-8 leading-relaxed">
               We're here to help you choose the right plan for your recovery journey. 
               Reach out to our support team anytime.
             </p>
-            <Button variant="outline" className="rounded-full border-gray-300">
+            <Button className="rounded-full glass-effect border-white/20 text-white hover:bg-white/10">
               Contact Support
             </Button>
           </Card>
