@@ -21,7 +21,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-24">
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
           <div className="animate-fade-in-up" style={{ animationDelay: "100ms" }}>
             <Card className="premium-card h-full">
               <div className="mb-6">
@@ -63,39 +63,49 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {[
             {
               icon: <Shield className="h-8 w-8 text-blue-400" />,
               title: "Complete Protection",
-              description: "Blocks all gambling websites globally with regular updates"
+              description: "Blocks all gambling websites globally with regular updates",
+              bgColor: "bg-gradient-to-br from-blue-600/20 to-blue-800/20",
+              borderColor: "border-blue-500/30"
             },
             {
               icon: <Lock className="h-8 w-8 text-purple-400" />,
               title: "Password Security",
-              description: "Your protection can't be disabled without your chosen password"
+              description: "Your protection can't be disabled without your chosen password",
+              bgColor: "bg-gradient-to-br from-purple-600/20 to-purple-800/20",
+              borderColor: "border-purple-500/30"
             },
             {
               icon: <Eye className="h-8 w-8 text-emerald-400" />,
               title: "Privacy First",
-              description: "Your browsing data stays private—we only block, never track"
+              description: "Your browsing data stays private—we only block, never track",
+              bgColor: "bg-gradient-to-br from-emerald-600/20 to-emerald-800/20",
+              borderColor: "border-emerald-500/30"
             },
             {
               icon: <Users className="h-8 w-8 text-pink-400" />,
               title: "Proven Results",
-              description: "Trusted by thousands on their journey to recovery"
+              description: "Trusted by thousands on their journey to recovery",
+              bgColor: "bg-gradient-to-br from-pink-600/20 to-pink-800/20",
+              borderColor: "border-pink-500/30"
             }
           ].map((value, index) => (
             <Card 
               key={index}
-              className="feature-card group text-center"
+              className={`feature-card group text-center ${value.bgColor} ${value.borderColor}`}
               style={{ animationDelay: `${300 + index * 100}ms` }}
             >
-              <div className="mb-6 inline-flex p-4 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10 group-hover:scale-110 transition-transform duration-300">
-                {value.icon}
+              <div className="animate-fade-in-up">
+                <div className="mb-6 inline-flex p-4 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                  {value.icon}
+                </div>
+                <h3 className="font-semibold mb-3 text-white">{value.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{value.description}</p>
               </div>
-              <h3 className="font-semibold mb-3 text-white">{value.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{value.description}</p>
             </Card>
           ))}
         </div>
