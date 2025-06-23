@@ -1,12 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Shield, Lock, Smartphone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Home = () => {
-  return (
-    <div className="relative">
+  return <div className="relative">
       {/* Hero Section */}
       <section className="hero-gradient py-24 sm:py-32 px-6 sm:px-8">
         <div className="max-w-4xl mx-auto text-center">
@@ -32,13 +29,7 @@ const Home = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Link to="/about">
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="rounded-full px-8 py-6 text-base bg-white/50 backdrop-blur-sm"
-                >
-                  Learn How It Works
-                </Button>
+                
               </Link>
             </div>
           </div>
@@ -58,28 +49,21 @@ const Home = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Lock className="h-8 w-8 text-blue-600" />,
-                title: "Password Protected",
-                description: "Once Protection Mode is on, only you can turn it off with your chosen password. No impulse decisions."
-              },
-              {
-                icon: <Shield className="h-8 w-8 text-green-600" />,
-                title: "Global Coverage",
-                description: "Blocks all gambling websites worldwide. Comprehensive protection that adapts as new sites emerge."
-              },
-              {
-                icon: <Smartphone className="h-8 w-8 text-purple-600" />,
-                title: "Android Ready",
-                description: "Seamlessly integrates with your Android device. Simple setup, powerful protection."
-              }
-            ].map((feature, index) => (
-              <Card 
-                key={index} 
-                className="p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white border-gray-100"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+            {[{
+            icon: <Lock className="h-8 w-8 text-blue-600" />,
+            title: "Password Protected",
+            description: "Once Protection Mode is on, only you can turn it off with your chosen password. No impulse decisions."
+          }, {
+            icon: <Shield className="h-8 w-8 text-green-600" />,
+            title: "Global Coverage",
+            description: "Blocks all gambling websites worldwide. Comprehensive protection that adapts as new sites emerge."
+          }, {
+            icon: <Smartphone className="h-8 w-8 text-purple-600" />,
+            title: "Android Ready",
+            description: "Seamlessly integrates with your Android device. Simple setup, powerful protection."
+          }].map((feature, index) => <Card key={index} className="p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white border-gray-100" style={{
+            animationDelay: `${index * 100}ms`
+          }}>
                 <div className="animate-fade-in-up">
                   <div className="mb-4 inline-flex p-3 rounded-full bg-gray-50">
                     {feature.icon}
@@ -87,8 +71,7 @@ const Home = () => {
                   <h3 className="text-xl font-semibold mb-3 text-gray-900">{feature.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </div>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -104,10 +87,7 @@ const Home = () => {
               <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
                 Join thousands who've taken the first step towards freedom from gambling addiction
               </p>
-              <Button 
-                size="lg" 
-                className="rounded-full px-8 py-6 text-base bg-white text-blue-600 hover:bg-gray-50"
-              >
+              <Button size="lg" className="rounded-full px-8 py-6 text-base bg-white text-blue-600 hover:bg-gray-50">
                 Get Protected Today
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -115,8 +95,6 @@ const Home = () => {
           </Card>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default Home;
