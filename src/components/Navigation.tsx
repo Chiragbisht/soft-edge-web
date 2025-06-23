@@ -1,6 +1,7 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
@@ -17,8 +18,9 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-gradient">
-            Lovable
+          <Link to="/" className="flex items-center space-x-2">
+            <Shield className="h-8 w-8 text-blue-600" />
+            <span className="text-2xl font-bold text-gray-900">GamBlock</span>
           </Link>
 
           {/* Navigation Links */}
@@ -27,9 +29,9 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
                   location.pathname === item.path
-                    ? "text-primary"
+                    ? "text-blue-600"
                     : "text-gray-600"
                 }`}
               >
@@ -46,8 +48,8 @@ const Navigation = () => {
               </Button>
             </Link>
             <Link to="/login">
-              <Button size="sm" className="rounded-full">
-                Get Started
+              <Button size="sm" className="rounded-full bg-blue-600 hover:bg-blue-700">
+                Get Protected
               </Button>
             </Link>
           </div>

@@ -1,12 +1,12 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
-import { Mail, Lock, User, ArrowRight } from "lucide-react";
+import { Mail, Lock, User, ArrowRight, Shield } from "lucide-react";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,14 +19,18 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-6 sm:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-6 sm:px-8 bg-gray-50">
       <div className="w-full max-w-md animate-fade-in-up">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gradient mb-2">Welcome</h1>
-          <p className="text-gray-600">Sign in to your account or create a new one</p>
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <Shield className="h-8 w-8 text-blue-600" />
+            <span className="text-2xl font-bold text-gray-900">GamBlock</span>
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h1>
+          <p className="text-gray-600">Access your protection dashboard</p>
         </div>
 
-        <Card className="bg-white/50 backdrop-blur-sm border-0 shadow-lg">
+        <Card className="bg-white border-gray-200 shadow-lg">
           <CardContent className="p-6">
             <Tabs defaultValue="signin" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-6">
@@ -44,7 +48,7 @@ const Login = () => {
                         id="email"
                         type="email"
                         placeholder="Enter your email"
-                        className="pl-10"
+                        className="pl-10 border-gray-300"
                         required
                       />
                     </div>
@@ -58,7 +62,7 @@ const Login = () => {
                         id="password"
                         type="password"
                         placeholder="Enter your password"
-                        className="pl-10"
+                        className="pl-10 border-gray-300"
                         required
                       />
                     </div>
@@ -66,7 +70,7 @@ const Login = () => {
                   
                   <Button 
                     type="submit" 
-                    className="w-full rounded-full"
+                    className="w-full rounded-full bg-blue-600 hover:bg-blue-700"
                     disabled={isLoading}
                   >
                     {isLoading ? "Signing in..." : "Sign In"}
@@ -91,7 +95,7 @@ const Login = () => {
                         id="name"
                         type="text"
                         placeholder="Enter your full name"
-                        className="pl-10"
+                        className="pl-10 border-gray-300"
                         required
                       />
                     </div>
@@ -105,7 +109,7 @@ const Login = () => {
                         id="signup-email"
                         type="email"
                         placeholder="Enter your email"
-                        className="pl-10"
+                        className="pl-10 border-gray-300"
                         required
                       />
                     </div>
@@ -118,8 +122,8 @@ const Login = () => {
                       <Input
                         id="signup-password"
                         type="password"
-                        placeholder="Create a password"
-                        className="pl-10"
+                        placeholder="Create a strong password"
+                        className="pl-10 border-gray-300"
                         required
                       />
                     </div>
@@ -127,10 +131,10 @@ const Login = () => {
                   
                   <Button 
                     type="submit" 
-                    className="w-full rounded-full"
+                    className="w-full rounded-full bg-blue-600 hover:bg-blue-700"
                     disabled={isLoading}
                   >
-                    {isLoading ? "Creating account..." : "Create Account"}
+                    {isLoading ? "Creating account..." : "Get Protected"}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
@@ -140,7 +144,7 @@ const Login = () => {
             <div className="mt-6">
               <Separator className="my-4" />
               <p className="text-center text-sm text-gray-600">
-                By continuing, you agree to our Terms of Service and Privacy Policy
+                Secure, private, and committed to your recovery journey
               </p>
             </div>
           </CardContent>
